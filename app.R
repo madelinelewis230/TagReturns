@@ -14,7 +14,7 @@ ui <- shinyUI(fluidPage(
     tags$h1(htmlOutput("selected_var3")),
     (htmlOutput("selected_var", style='font-size:16px')),
     br(),
-    img(src='WalleyeTags.png', align = "center", height="80%", width="80%"),
+    img(src='WalleyeTags.png', align = "center", height="100%", width="100%"),
     br(),
     htmlOutput("selected_var2", style='font-size:16px'),
     br(),
@@ -52,10 +52,10 @@ server <- shinyServer(function(input, output) {
     
     #output$selected_var <- renderText({paste(filtered_data()$Trans)})  
     output$selected_var <- renderText({if_else(input$Lang == 'English', paste('Walleye in Big Creek and Brushy Creek have been tagged to evaluate survival, growth, and escapement. '), paste('Los leucomas en Big Creek y Brushy Creek han sido etiquetados para evaluar la supervivencia, el crecimiento y el escape.'))})
-    output$selected_var2 <- renderText({if_else(input$Lang == 'English', paste(' <i> Tag Location: </i> Fish will be tagged with one or multiple external tags (a), one small internal tag (b), and one large internal tag (c). '), paste('<i>Ubicación de la etiqueta: </i> Los peces se marcarán con una o varias marcas externas (a), una pequeña marca interna (b) y una grande interna (c).'))})
-    output$selected_var4 <- renderText({if_else(input$Lang == 'English', paste('If you encounter a fish with an external tag, you are eligible for a <b> $200 reward </b>. To receive reward:
-<br> <br> 1. If the fish was released, send a picture of the fish with the external tag visible, along with the survey information below to fishtags@iastate.edu. Please <b> do not </b> remove the external tag.  </br> </br> 
-                                                                              2. If the fish was harvested, place internal tags (b and c) and information listed below into an envelope, and call or e-mail for further instructions. </br> '), 'Si encuentra un pez con una etiqueta externa, es elegible para una<b> recompensa de $200 </b>. Para recibir recompensa:
+    output$selected_var2 <- renderText({if_else(input$Lang == 'English', paste(' <h1> Tag Location: </h1> Fish will be tagged with one or multiple external tags (a), one small internal tag (b), and one large internal tag (c). '), paste('<h1>Ubicación de la etiqueta: </h1> Los peces se marcarán con una o varias marcas externas (a), una pequeña marca interna (b) y una grande interna (c).'))})
+    output$selected_var4 <- renderText({if_else(input$Lang == 'English', paste('If you encounter a fish with an external tag, you are eligible for a <b> $200 reward </b>. <br> <h1> To receive reward: </h1> 
+1. If the fish was released, send a picture of the fish with the external tag visible, along with the survey information below to fishtags@iastate.edu. Please <b> do not </b> remove the external tag.  </br> </br> 
+                                                                              2. If the fish was harvested, place internal tags (b and c) and information listed below into an envelope, and call or e-mail for further instructions. </br> '), 'Si encuentra un pez con una etiqueta externa, es elegible para una<b> recompensa de $200 </b>.<h1> Para recibir recompensa:</h1> 
  1. Si el pez fue liberado, envíe una foto del pez con la etiqueta externa visible, junto con la información de la encuesta a continuación a fishtags@iastate.edu. <b> No </b> elimine la etiqueta externa. </br> </br>
                                                                               2. Si el pescado fue cosechado, coloque las etiquetas internas (byc) y la información que se indica a continuación en un sobre, y llame o envíe un correo electrónico para obtener más instrucciones. </br> ')})
     output$selected_var3 <- renderText({if_else(input$Lang == 'English', paste(' <b> Attention Anglers'), paste(' <b> 
@@ -89,7 +89,7 @@ This study is a continuation of past research that aims to better understand wha
     Iowa Department of Natural Resources<br>  
     Iowa State University<br>
     U.S. Army Corps of Engineers<br>
-    <br>'), paste('Update here'))})
+    <br>'), paste('Envíe por correo electrónico informes de etiquetas, imágenes o preguntas a: fishtags@iastate.edu o llamar <b> (515) 294 - 7991 </b>'))})
 
 })
 
@@ -99,12 +99,3 @@ This study is a continuation of past research that aims to better understand wha
 
 
 shinyApp(ui, server)
-
-
-
-
-
-
-
-
-
