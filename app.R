@@ -14,7 +14,7 @@ ui <- shinyUI(fluidPage(
     tags$h1(htmlOutput("selected_var3")),
     (htmlOutput("selected_var", style='font-size:16px')),
     br(),
-    img(src='WalleyeTags.png', align = "center", height="100%", width="100%"),
+    img(src='WalleyeTags.png', align = "center", height="80%", width="80%"),
     br(),
     htmlOutput("selected_var2", style='font-size:16px'),
     br(),
