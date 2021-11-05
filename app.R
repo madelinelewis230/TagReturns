@@ -89,7 +89,20 @@ This study is a continuation of past research that aims to better understand wha
     Iowa Department of Natural Resources<br>  
     Iowa State University<br>
     U.S. Army Corps of Engineers<br>
-    <br>'), paste('Envíe por correo electrónico informes de etiquetas, imágenes o preguntas a: fishtags@iastate.edu o llamar <b> (515) 294 - 7991 </b>'))})
+    <br>'), paste('<h1> Preguntas frecuentes </h1> <b> ¿Cómo sé si soy elegible para una recompensa? </b> <br>
+    Los pescadores que capturan peces con una etiqueta externa (etiqueta de mandíbula y / o etiqueta de bucle) y cosechan el pez recibirán la recompensa después de devolver la etiqueta interna grande (c). Si un pez fue liberado, usted será elegible para una recompensa si proporciona una imagen del pez con la etiqueta externa claramente visible y proporciona la información necesaria con respecto a su captura. <br>
+    <br>
+    <b> ¿Qué pasa si un pez solo tiene una etiqueta externa? </b> <br>
+    Aún eres elegible para la recompensa si solo hay una etiqueta externa, siempre que se devuelva la etiqueta interna grande o se proporcione una imagen verificable. <br>
+    <br>
+    <b> ¿Qué pasa si pesco un pez sin etiquetas externas, pero encuentro una pequeña etiqueta interna al limpiar el pescado? ¿O encuentro una pequeña etiqueta interna en una especie diferente? </b> <br>
+    Informe las etiquetas que encuentre, ya que todos los datos de informes de etiquetas son beneficiosos para nuestra investigación. Sin embargo, solo los peces con etiquetas internas grandes (c) son elegibles para una recompensa. <br>
+    <br> <b> No dude en comunicarse con cualquier pregunta adicional. </b>
+    <h1> Acerca del proyecto </h1>
+    Este estudio es una continuación de investigaciones anteriores cuyo objetivo es comprender mejor qué factores regulan las poblaciones de lucioperca en los embalses de Iowa. También estamos evaluando la efectividad de las barreras para prevenir el escape de leucomas sobre aliviaderos, con el objetivo de mejorar las pesquerías de embalse. Los informes de etiquetas nos brindan información importante sobre la captura y la presión de pesca, y las devoluciones de etiquetas nos permiten volver a implementar las etiquetas y continuar recopilando datos durante todo el estudio. Agradecemos su cooperación y participación en la mejora de las pesquerías de lucioperca de Iowa. <br>
+    
+    <br>
+'))})
 
 })
 
