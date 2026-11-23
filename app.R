@@ -105,13 +105,11 @@ custom_css <- "
 "
 
 ui <- page_fluid(
-  theme = bs_theme(
+theme = bs_theme(
     version = 5,
     bootswatch = "flatly",
     primary = "#111111",
-    secondary = "#FFC72C",
-    base_font = font_google("Inter"),
-    heading_font = font_google("Oswald")
+    secondary = "#FFC72C"
   ),
   class = "p-0",
   tags$head(tags$style(HTML(custom_css))),
@@ -296,3 +294,4 @@ server <- function(input, output, session) {
 }
 
 shinyApp(ui = ui, server = server)
+
