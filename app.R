@@ -1,24 +1,139 @@
+startup_error <- NULL
 
+tryCatch({
+  library(shiny)
+  library(dplyr)
+  # Put all your data loading and setup code here
+  my_data <- read.csv("data/mydata.csv")
+}, error = function(e) {
+  startup_error <<- conditionMessage(e)
+})
 
-library(shiny)
-library(gridExtra)
-library(ggplot2)
-library(dplyr)
-library(lubridate)
+if (!is.null(startup_error)) {
+  ui <- fluidPage(
+    h3("Startup Error Caught:"),
+    verbatimTextOutput("err")
+  )
+  server <- function(input, output, session) {
+    output$err <- renderText(startup_error)
+  }
+} else {
+  library(shiny)
+library(bslib)
 
+custom_css <- "
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: #ffffff;
+    /* Adds space at the bottom so content isn't covered by the fixed bottom banner */
+    padding-bottom: 85px; 
+  }
+  .hazard-stripe {
+    height: 18px;
+    background: repeating-linear-gradient(
+      -45deg,
+      #FFC72C,
+      #FFC72C 15px,
+      #111111 15px,
+      #111111 30px
+    );
+    width: 100%;
+  }
+  .hero-banner {
+    background-color: #FFFFFF;
+    color: #111111;
+    padding: 1.75rem 1.5rem;
+    text-align: center;
+  }
+  .hero-reward {
+    color: #111111;
+    background-color: #FFC72C;
+    display: inline-block;
+    padding: 0.2rem 1.25rem;
+    border-radius: 6px;
+    font-weight: 900;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+    margin-top: 0.25rem;
+  }
+  /* Subtle sticky top jump-bar for single-page navigation */
+  .jump-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    padding: 0.6rem 0;
+  }
+  .jump-nav a {
+    color: #111111;
+    font-weight: 700;
+    text-decoration: none;
+    margin: 0 1rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+  }
+  .jump-nav a:hover {
+    background-color: #FFC72C;
+  }
+  /* Offsets anchor scrolling so sticky jump-nav doesn't cover section titles */
+  .page-section {
+    scroll-margin-top: 65px;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  .tag-instruction-card {
+    border-left: 6px solid #FFC72C;
+    background-color: #f8f9fa;
+  }
+  .diagram-placeholder {
+    border: 2px dashed #adb5bd;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    min-height: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    color: #495057;
+  }
+  /* Fixed footer locked to the bottom of the browser window at all times */
+  .fixed-bottom-banner {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 1050;
+    background-color: #FFFFFF;
+    color: #111111;
+    box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.12);
+  }
+  .fixed-bottom-banner a {
+    color: #b38000;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .fixed-bottom-banner a:hover {
+    text-decoration: underline;
+  }
+"
 
-##testing
-ui <-  page_fluid(
+ui <- page_fluid(
   theme = bs_theme(
     version = 5,
     bootswatch = "flatly",
     primary = "#111111",
     secondary = "#FFC72C",
-    #base_font = font_google("Inter"),
-    #heading_font = font_google("Oswald")
+    base_font = font_google("Inter"),
+    heading_font = font_google("Oswald")
   ),
   class = "p-0",
-  #tags$head(tags$style(HTML(custom_css))),
+  tags$head(tags$style(HTML(custom_css))),
   
   # -------------------------------------------------------------------------
   # TOP HAZARD BANNER & HEADER
@@ -196,15 +311,7 @@ ui <-  page_fluid(
   )
 )
 
-
-server <- shinyServer(function(input, output) {
-    
- 
-        
-    }
-
- 
-
-
-
-shinyApp(ui, server)
+server <- function(input, output, session) {
+}
+}
+shinyApp(ui = ui, server = server)
