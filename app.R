@@ -5,12 +5,15 @@ custom_css <- "
 
   html {
     scroll-behavior: smooth;
+    font-size: 18px; /* Scales up all rem-based sizing across the whole page */
   }
   body {
     background-color: #ffffff;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.6;
     color: #212529;
-    padding-bottom: 85px;
+    padding-bottom: 95px;
     margin: 0;
   }
   h1, h2, h3, h4, h5 {
@@ -21,33 +24,52 @@ custom_css <- "
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
+  /* Expands the main content container to fill wide desktop screens nicely */
+  .main-content-container {
+    width: 92%;
+    max-width: 1550px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
   .hazard-stripe {
-    height: 18px;
+    height: 22px;
     background: repeating-linear-gradient(
       -45deg,
       #FFC72C,
-      #FFC72C 15px,
-      #111111 15px,
-      #111111 30px
+      #FFC72C 18px,
+      #111111 18px,
+      #111111 36px
     );
     width: 100%;
   }
   .hero-banner {
     background-color: #FFFFFF;
     color: #111111;
-    padding: 1.75rem 1.5rem;
+    padding: 2rem 1.5rem;
     text-align: center;
+  }
+  .hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 0;
+    line-height: 1.1;
   }
   .hero-reward {
     color: #111111;
     background-color: #FFC72C;
     display: inline-block;
-    padding: 0.2rem 1.25rem;
+    padding: 0.25rem 1.5rem;
     border-radius: 6px;
     font-weight: 900;
-    font-size: 2.5rem;
+    font-size: 3rem;
     letter-spacing: 1px;
-    margin-top: 0.25rem;
+    margin-top: 0.35rem;
+  }
+  .hero-subtitle {
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-top: 0.75rem;
+    margin-bottom: 0;
   }
   /* Subtle sticky top jump-bar for single-page navigation */
   .jump-nav {
@@ -56,14 +78,15 @@ custom_css <- "
     z-index: 1020;
     background-color: #f8f9fa;
     border-bottom: 1px solid #dee2e6;
-    padding: 0.6rem 0;
+    padding: 0.75rem 0;
+    font-size: 1.05rem;
   }
   .jump-nav a {
     color: #111111;
     font-weight: 700;
     text-decoration: none;
-    margin: 0 1rem;
-    padding: 0.35rem 0.75rem;
+    margin: 0 1.25rem;
+    padding: 0.45rem 0.9rem;
     border-radius: 4px;
     transition: background-color 0.2s;
     display: inline-block;
@@ -73,40 +96,54 @@ custom_css <- "
   }
   /* Offsets anchor scrolling so sticky jump-nav doesn't cover section titles */
   .page-section {
-    scroll-margin-top: 65px;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    scroll-margin-top: 75px;
+    padding-top: 2.25rem;
+    padding-bottom: 2.25rem;
   }
   .custom-card {
     border: 1px solid #dee2e6;
     border-radius: 8px;
     background-color: #ffffff;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    margin-bottom: 1.25rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 1.5rem;
     overflow: hidden;
   }
   .custom-card-header {
     background-color: #f1f3f5;
     border-bottom: 1px solid #dee2e6;
-    padding: 0.85rem 1.25rem;
+    padding: 1rem 1.5rem;
+  }
+  .custom-card-header h4 {
+    font-size: 1.5rem;
+    margin: 0;
+    font-weight: 700;
   }
   .custom-card-body {
-    padding: 1.25rem;
+    padding: 1.5rem;
+    font-size: 1.05rem;
+  }
+  .custom-card-body h5 {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+  .custom-card-body li {
+    margin-bottom: 0.4rem;
   }
   .tag-instruction-card {
-    border-left: 6px solid #FFC72C;
+    border-left: 7px solid #FFC72C;
     background-color: #f8f9fa;
   }
   /* Clean native collapsible FAQ styling */
   details.faq-item {
     border: 1px solid #dee2e6;
     border-radius: 6px;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.9rem;
     background-color: #ffffff;
     overflow: hidden;
   }
   details.faq-item summary {
-    padding: 1rem 1.25rem;
+    padding: 1.15rem 1.5rem;
+    font-size: 1.15rem;
     font-weight: 700;
     cursor: pointer;
     background-color: #f8f9fa;
@@ -120,7 +157,7 @@ custom_css <- "
   }
   details.faq-item summary::after {
     content: '+';
-    font-size: 1.35rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: #111111;
   }
@@ -132,8 +169,9 @@ custom_css <- "
     border-bottom: 1px solid #dee2e6;
   }
   .faq-answer {
-    padding: 1rem 1.25rem;
+    padding: 1.25rem 1.5rem;
     margin: 0;
+    font-size: 1.05rem;
   }
   /* Fixed footer locked to the bottom of the browser window at all times */
   .fixed-bottom-banner {
@@ -145,6 +183,10 @@ custom_css <- "
     background-color: #FFFFFF;
     color: #111111;
     box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.12);
+  }
+  .fixed-bottom-banner p {
+    margin-bottom: 0;
+    font-size: 1rem;
   }
   .fixed-bottom-banner a {
     color: #b38000;
@@ -168,10 +210,10 @@ ui <- fluidPage(
   div(class = "hazard-stripe"),
   div(
     class = "hero-banner",
-    h1("ATTENTION ANGLERS", style = "font-size: 2.75rem; font-weight: 700; margin-bottom: 0;"),
+    h1("ATTENTION ANGLERS", class = "hero-title"),
     div(class = "hero-reward", "$100 REWARD"),
     p(
-      style = "font-size: 1.2rem; font-weight: 600; margin-top: 0.5rem; margin-bottom: 0;",
+      class = "hero-subtitle",
       "For the return of select tags on Hybrid Striped Bass and Paddlefish caught in or below Rathbun Lake."
     )
   ),
@@ -189,7 +231,7 @@ ui <- fluidPage(
   # MAIN SINGLE-PAGE CONTENT CONTAINER
   # -------------------------------------------------------------------------
   div(
-    class = "container",
+    class = "main-content-container",
     
     # =======================================================================
     # SECTION 1: TAG INFORMATION & DIAGRAM
@@ -203,7 +245,7 @@ ui <- fluidPage(
           width = 5,
           div(
             class = "custom-card tag-instruction-card",
-            div(class = "custom-card-header", h4("How to Claim Your $100 Reward", style = "margin: 0; font-weight: 700;")),
+            div(class = "custom-card-header", h4("How to Claim Your $100 Reward")),
             div(
               class = "custom-card-body",
               p(
@@ -217,7 +259,7 @@ ui <- fluidPage(
                 " Leave all tags attached! Provide a clear photo of the fish with the external tags visible, and report the ID numbers printed on the tags."
               ),
               hr(),
-              h5("Eligible External Tags to Look For:", style = "font-weight: 700;"),
+              h5("Eligible External Tags to Look For:"),
               tags$ul(
                 style = "margin-bottom: 0;",
                 tags$li(strong("Hybrid Striped Bass:"), " Yellow dorsal external tag (near top fin), yellow belly external tag, and/or a metal jaw tag."),
@@ -228,7 +270,7 @@ ui <- fluidPage(
           
           div(
             class = "custom-card",
-            div(class = "custom-card-header", h4("How to Report a Tagged Fish", style = "margin: 0; font-weight: 700;")),
+            div(class = "custom-card-header", h4("How to Report a Tagged Fish")),
             div(
               class = "custom-card-body",
               p(icon("phone"), strong(" Call Iowa DNR:"), " (641)-647-2406"),
@@ -243,13 +285,13 @@ ui <- fluidPage(
           width = 7,
           div(
             class = "custom-card",
-            div(class = "custom-card-header", h4("Eligible Fish & Tag Locations", style = "margin: 0; font-weight: 700;")),
+            div(class = "custom-card-header", h4("Eligible Fish & Tag Locations")),
             div(
               class = "custom-card-body text-center",
               tags$img(
-                src = "TD.png", # Must match exact filename & extension in www/ folder
+                src = "TD.png",
                 class = "img-responsive center-block",
-                style = "max-width: 100%; height: auto; border-radius: 6px; margin: 0 auto;",
+                style = "width: 100%; max-width: 850px; height: auto; border-radius: 6px; margin: 0 auto;",
                 alt = "Hybrid Striped Bass and Paddlefish Tag Diagram"
               )
             )
@@ -266,7 +308,7 @@ ui <- fluidPage(
     div(
       id = "faq-section",
       class = "page-section",
-      h2("Frequently Asked Questions", style = "font-weight: 700; margin-bottom: 1rem;"),
+      h2("Frequently Asked Questions", style = "font-size: 2.25rem; font-weight: 700; margin-bottom: 1.25rem;"),
       
       tags$details(
         class = "faq-item",
@@ -308,11 +350,11 @@ ui <- fluidPage(
     div(
       id = "history-section",
       class = "page-section",
-      h2("Project Information", style = "font-weight: 700; margin-bottom: 1rem;"),
+      h2("Project Information", style = "font-size: 2.25rem; font-weight: 700; margin-bottom: 1rem;"),
       fluidRow(
         column(
           width = 11,
-          h4("Collaborative Fisheries Research", style = "font-weight: 700; margin-top: 0.5rem;"),
+          h4("Collaborative Fisheries Research", style = "font-size: 1.5rem; font-weight: 700; margin-top: 0.5rem;"),
           p("This telemetry and tagging initiative is a joint partnership between the ", strong("Iowa Department of Natural Resources (Iowa DNR)"), " and the ", strong("Department of Natural Resource Ecology and Management (NREM) at Iowa State University"), "."),
           p("Hybrid Striped Bass (Wipers) and Paddlefish are two important sportfish in Iowa. This project aims to better understand the movement and habitat use of both species, as well as their natural mortality and harvest rates. All of this information will be used to develop management plans to maintain these fisheries in a sustainable manner.")
         )
@@ -326,10 +368,9 @@ ui <- fluidPage(
   div(
     class = "fixed-bottom-banner",
     div(
-      class = "container text-center",
-      style = "padding-top: 0.5rem; padding-bottom: 0.5rem;",
+      class = "main-content-container text-center",
+      style = "padding-top: 0.6rem; padding-bottom: 0.6rem;",
       p(
-        style = "margin-bottom: 0; font-size: 0.875rem;",
         strong("Iowa State University NREM & Iowa DNR"),
         "  |  Call: ", strong("(641)-647-2406"),
         "  |  Email: ", tags$a(href = "mailto:fishtags@iastate.edu", "fishtags@iastate.edu")
@@ -342,5 +383,4 @@ ui <- fluidPage(
 server <- function(input, output, session) {
 }
 
-shinyApp(ui = ui, server = server)
 shinyApp(ui = ui, server = server)
