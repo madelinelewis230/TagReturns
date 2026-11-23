@@ -1,17 +1,22 @@
 startup_error <- NULL
+startup_error <- NULL
 
 tryCatch({
   library(shiny)
-  library(dplyr)
-  # Put all your data loading and setup code here
-  my_data <- read.csv("data/mydata.csv")
+  # --- Keep all your normal startup code here ---
+  
 }, error = function(e) {
-  startup_error <<- conditionMessage(e)
+  startup_error <<- paste0(
+    "Error: ", conditionMessage(e), "\n",
+    "Failed at: ", paste(deparse(conditionCall(e)), collapse = " "), "\n",
+    "Working Dir: ", getwd(), "\n",
+    "Files on Server:\n", paste(list.files(recursive = TRUE), collapse = "\n")
+  )
 })
 
 if (!is.null(startup_error)) {
   ui <- fluidPage(
-    h3("Startup Error Caught:"),
+    h3("Startup Diagnostic:"),
     verbatimTextOutput("err")
   )
   server <- function(input, output, session) {
