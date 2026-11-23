@@ -291,8 +291,5 @@ ui <- page_fluid(
   )
 )
 
-server <- function(input, output, session) {
-}
-
-shinyApp(ui = ui, server = server)
+shinyApp(ui, server)
 
