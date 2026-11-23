@@ -109,8 +109,8 @@ ui <- page_fluid(
     bootswatch = "flatly",
     primary = "#111111",
     secondary = "#FFC72C",
-    base_font = font_google("Inter"),
-    heading_font = font_google("Oswald")
+   # base_font = font_google("Inter"),
+    #heading_font = font_google("Oswald")
   ),
   class = "p-0",
   tags$head(tags$style(HTML(custom_css))),
@@ -193,11 +193,11 @@ ui <- page_fluid(
         card(
           card_header(h4("Eligible Fish & Tag Locations", class = "mb-0 fw-bold")),
           card_body(
-            tags$img(
-              src = "TD.png", # Must match your exact filename & extension (.png or .jpg)
-              class = "img-fluid rounded mx-auto d-block",
-              alt = "Hybrid Striped Bass and Paddlefish Tag Diagram"
-            )
+           # tags$img(
+            #  src = "TD.png", # Must match your exact filename & extension (.png or .jpg)
+             # class = "img-fluid rounded mx-auto d-block",
+             # alt = "Hybrid Striped Bass and Paddlefish Tag Diagram"
+            #)
           )
         )
       )
