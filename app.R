@@ -1,32 +1,9 @@
-startup_error <- NULL
-startup_error <- NULL
-
-tryCatch({
-  library(shiny)
-  # --- Keep all your normal startup code here ---
-  
-}, error = function(e) {
-  startup_error <<- paste0(
-    "Error: ", conditionMessage(e), "\n",
-    "Failed at: ", paste(deparse(conditionCall(e)), collapse = " "), "\n",
-    "Working Dir: ", getwd(), "\n",
-    "Files on Server:\n", paste(list.files(recursive = TRUE), collapse = "\n")
-  )
-})
-
-if (!is.null(startup_error)) {
-  ui <- fluidPage(
-    h3("Startup Diagnostic:"),
-    verbatimTextOutput("err")
-  )
-  server <- function(input, output, session) {
-    output$err <- renderText(startup_error)
-  }
-} else {
-  library(shiny)
+library(shiny)
 library(bslib)
 
 custom_css <- "
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Oswald:wght@700&display=swap');
+
   html {
     scroll-behavior: smooth;
   }
@@ -134,8 +111,8 @@ ui <- page_fluid(
     bootswatch = "flatly",
     primary = "#111111",
     secondary = "#FFC72C",
-    base_font = font_google("Inter"),
-    heading_font = font_google("Oswald")
+    base_font = "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+    heading_font = "Oswald, Impact, 'Arial Narrow', sans-serif"
   ),
   class = "p-0",
   tags$head(tags$style(HTML(custom_css))),
@@ -219,7 +196,7 @@ ui <- page_fluid(
           card_header(h4("Eligible Fish & Tag Locations", class = "mb-0 fw-bold")),
           card_body(
             tags$img(
-              src = "TD.png", # Must match your exact filename & extension (.png or .jpg)
+              src = "TD.png", # Must match exact filename & extension in www/ folder
               class = "img-fluid rounded mx-auto d-block",
               alt = "Hybrid Striped Bass and Paddlefish Tag Diagram"
             )
@@ -292,8 +269,6 @@ ui <- page_fluid(
           p("This telemetry and tagging initiative is a joint partnership between the ", strong("Iowa Department of Natural Resources (Iowa DNR)"), " and the ", strong("Department of Natural Resource Ecology and Management (NREM) at Iowa State University"), "."),
           p("Hybrid Striped Bass (Wipers) and Paddlefish are two important sportfish in Iowa. This project aims to better understand the movement and habitat use of both species, as well as their natural mortality and harvest rates. All of this information will be used to develop management plans to maintain these fisheries in a sustainable manner.")
         )
-        
-       
       )
     )
   ),
@@ -318,5 +293,5 @@ ui <- page_fluid(
 
 server <- function(input, output, session) {
 }
-}
+
 shinyApp(ui = ui, server = server)
